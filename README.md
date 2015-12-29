@@ -1,5 +1,16 @@
 ﻿ What is it?
   -----------
+
+## 使用指南
+1. 下载bluestack  链接: http://pan.baidu.com/s/1mhaFjjM 密码: jkhq
+2. 下载 vc++ 2010 x86  链接: http://pan.baidu.com/s/1mhki80g 密码: xpbf
+3. 下载 net 4.5 链接: http://pan.baidu.com/s/1brU5xc 密码: xwiu
+4. 进入coc 把语言设置成英文 (一定要设置不然不工作的)
+
+## 报毒须知
+1. autoit 生成的程序 默认报毒的， 杀毒软件通病  杀易语言程序一样
+2. 如果不放心的话使用vmware 
+ 
 - A Free Clash of Clans bot. 
 - A bot is a general term in gaming that is used to refer to a character controlled by a computer.
 - https://mybot.run
