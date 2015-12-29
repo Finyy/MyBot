@@ -6,6 +6,7 @@
 2. 下载 vc++ 2010 x86  链接: http://pan.baidu.com/s/1mhki80g 密码: xpbf
 3. 下载 net 4.5 链接: http://pan.baidu.com/s/1brU5xc 密码: xwiu
 4. 进入coc 把语言设置成英文 (一定要设置不然不工作的)
+5. 运行kunlun缩放.bat  不然coc 无法缩进
 
 ## 报毒须知
 1. autoit 生成的程序 默认报毒的， 杀毒软件通病  杀易语言程序一样
