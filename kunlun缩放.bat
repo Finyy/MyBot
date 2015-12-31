@@ -5,10 +5,10 @@ set "workingdir=%~dp0"
 
 
 title kunlun coc 缩进修复
-echo kunlun coc 缩进修复， 重启bluestack 进游戏 缩进就正常了
+echo kunlun coc 缩进修复
 
 
 copy com.supercell.clashofclans.kunlun.cfg C:\ProgramData\BlueStacks\UserData\InputMapper\
 
-echo 安装完成
+echo 完成
 pause >nul
