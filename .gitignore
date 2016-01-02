@@ -10,7 +10,7 @@
 *.exe
 
 # Global Folders
-#[Pp]rofiles/
+[Pp]rofiles/
 [Tt]emplates/
 [Tt]emp/
 [Bb]ackup/
