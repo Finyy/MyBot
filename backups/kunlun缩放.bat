@@ -1,3 +1,1 @@
-@ECHO OFF
-copy com.supercell.clashofclans.kunlun.cfg C:\ProgramData\BlueStacks\UserData\InputMapper\&&echo 完成
-pause >nul
+@ECHO OFF&&copy com.supercell.clashofclans.kunlun.cfg C:\ProgramData\BlueStacks\UserData\InputMapper\&&echo 完成&&pause >nul
