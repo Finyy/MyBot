@@ -42,16 +42,15 @@ Local $x = 30, $y = 205
 		;$y -=5
 		;$lblProfile = GUICtrlCreateLabel(GetTranslated(7,27, "Current Profile") & ":", $x, $y, -1, -1)
 		;$y += 15
-		$cmbProfile = GUICtrlCreateCombo("01", $x, $y, 40, 18, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
+		$cmbRecSetting = GUICtrlCreateCombo("Costum", $x, $y, 100, 18, BitOR($CBS_DROPDOWNLIST, $CBS_AUTOHSCROLL))
 		$txtTip = GetTranslated(7,28, "Use this to switch to a different profile")& @CRLF & GetTranslated(7,29, "Your profiles can be found in") & ": " & @CRLF & $sProfilePath
 		GUICtrlSetTip(-1, $txtTip)
-		GUICtrlSetData(-1, "02|03|04|05|06", "01")
-		GUICtrlSetOnEvent(-1, "cmbProfile")
-		$txtVillageName = GUICtrlCreateInput(GetTranslated(7,30, "MyVillage"), $x + 50, $y, 130, 20, BitOR($SS_CENTER, $ES_AUTOHSCROLL))
-		GUICtrlSetLimit (-1, 100, 0)
-		GUICtrlSetFont(-1, 9, 400, 1)
-		GUICtrlSetTip(-1, GetTranslated(7,31, "Your village/profile's name"))
-		GUICtrlSetOnEvent(-1, "txtVillageName")
+		GUICtrlSetData(-1, "TH Snipe |TH 8 (G + E) |TH 8(G + E + DE)|TH 8 (DE)|TH 9 (G + E) |TH 9 (G + E + DE) |TH 9 (DE) |TH 10 (G + E) |TH 10 (G + E + DE) |TH 10 (DE)", "Custom")
+		;GUICtrlSetOnEvent(-1, "cmbRecSetting")
+		$btnConfirmRecSetting = GUICtrlCreateButton ("Confirm", $x +120, $y, 65, 20)
+		$txtTip = "Apply your selected settings with this button."
+		GUICtrlSetTip(-1, $txtTip)
+		GUICtrlSetOnEvent(-1, "btnConfirmRecSetting")
 	GUICtrlCreateGroup("", -99, -99, 1, 1)
 
 Local $x = 260, $y = 205

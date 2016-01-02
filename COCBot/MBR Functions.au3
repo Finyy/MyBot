@@ -24,6 +24,8 @@
 #include "functions\Attack\CheckHeroesHealth.au3"
 #include "functions\Attack\dropCC.au3"
 #include "functions\Attack\dropHeroes.au3"
+#include "functions\Attack\dropSpell.au3"
+#include "functions\Attack\dropEarth.au3"
 #include "functions\Attack\GoldElixirChange.au3"
 #include "functions\Attack\GoldElixirChangeEBO.au3"
 #include "functions\Attack\PrepareAttack.au3"
@@ -129,6 +131,8 @@
 #include "functions\Other\MoveMouseOutBS.au3"
 #include "functions\Other\LaunchConsole.au3"
 #include "functions\Other\ADB.au3"
+#include "functions\Other\SettingSwitch.au3"
+#include "functions\Other\ProfileSwitch.au3"
 
 #include "functions\Pixels\_CaptureRegion.au3"
 #include "functions\Pixels\_ColorCheck.au3"
@@ -156,6 +160,9 @@
 ;#include "functions\Read Text\getString.au3"
 #include "functions\Read Text\getOcr.au3"
 
+#include "functions\SmartZap\DEDrillSearch.au3"
+#include "functions\SmartZap\DEDropSmartSpell.au3"
+
 ;#include "functions\Search\checkNextButton.au3"
 #include "functions\Search\CompareResources.au3"
 #include "functions\Search\GetResources.au3"
@@ -164,6 +171,7 @@
 #include "functions\Search\CheckZoomOut.au3"
 #include "functions\Search\SearchTownHallloc.au3"
 #include "functions\Search\SnipeWhileTrain.au3"
+#include "functions\Search\CheckHeroAvailable.au3"
 
 #include "functions\Village\_TrainMoveBtn.au3"
 #include "functions\Village\BoostBarracks.au3"
@@ -202,5 +210,8 @@
 #include "functions\Village\BoostHeroes.au3"
 #include "functions\Village\UpgradeHeroes.au3"
 #include "functions\Village\ClanLevel.au3"
+;#include "functions\Village\DESideSpell.au3"
+;#include "functions\Village\DESideDSpell.au3"
+#include "functions\Village\DrillZapSpell.au3"
 
 

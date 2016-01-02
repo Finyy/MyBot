@@ -48,9 +48,11 @@ AtkLogHead()
 #include "GUI\MBR GUI Control Tab EndBattle.au3"
 #include "GUI\MBR GUI Control Tab Donate.au3"
 #include "GUI\MBR GUI Control Tab Misc.au3"
+#include "GUI\MBR GUI Control Tab Profiles.au3"
 #include "GUI\MBR GUI Control Tab Upgrade.au3"
 #include "GUI\MBR GUI Control Tab Notify.au3"
 #include "GUI\MBR GUI Control Tab Expert.au3"
+#include "GUI\MBR GUI Control Tab Options.au3"
 #include "GUI\MBR GUI Control Tab Stats.au3"
 
 Func GUIControl($hWind, $iMsg, $wParam, $lParam)

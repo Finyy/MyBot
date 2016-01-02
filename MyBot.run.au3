@@ -20,7 +20,7 @@
 #pragma compile(ProductName, My Bot)
 
 #pragma compile(ProductVersion, 5.0)
-#pragma compile(FileVersion, 5.0.2)
+#pragma compile(FileVersion, 5.0.2-MOD)
 #pragma compile(LegalCopyright, © https://mybot.run)
 
 Global $sBotDll = @ScriptDir & "\MBRPlugin.dll"
@@ -38,7 +38,7 @@ EndIf
 
 #include "COCBot\MBR Global Variables.au3"
 
-$sBotVersion = "v5.0.2" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it it also use on Checkversion()
+$sBotVersion = "v5.0.2-MOD" ;~ Don't add more here, but below. Version can't be longer than vX.y.z because it it also use on Checkversion()
 $sBotTitle = "My Bot " & $sBotVersion & " " & $DEFAULT_WIDTH & "x" & $DEFAULT_HEIGHT & " "
 
 #include "COCBot\functions\Main Screen\Android.au3"
@@ -109,7 +109,7 @@ CheckDisplay()  ; verify display size and DPI (Dots Per Inch) setting
 LoadTHImage() ; Load TH images
 LoadElixirImage() ; Load Elixir images
 LoadElixirImage75Percent(); Load Elixir images full at 75%
-CheckVersion() ; check latest version on mybot.run site
+;CheckVersion() ; check latest version on mybot.run site
 
 ;AutoStart Bot if request
 AutoStart()
@@ -149,6 +149,8 @@ Func runBot() ;Bot that runs everything in order
 			If $RequestScreenshot = 1 Then PushMsg("RequestScreenshot")
 			If _Sleep($iDelayRunBot3) Then Return
 			VillageReport()
+			   ProfileSwitch()
+
 			If $OutOfGold = 1 And ($iGoldCurrent >= $itxtRestartGold) Then ; check if enough gold to begin searching again
 				$OutOfGold = 0 ; reset out of gold flag
 				Setlog("Switching back to normal after no gold to search ...", $COLOR_RED)
@@ -182,6 +184,12 @@ Func runBot() ;Bot that runs everything in order
 			If _Sleep($iDelayRunBot3) Then Return
 			If $Restart = True Then ContinueLoop
 			DonateCC()
+			If _Sleep($iDelayRunBot3) Then Return
+			If $Restart = True Then ContinueLoop
+			If $ichkTrainLightSpell = 1 Then
+                DrillZapSpell() ; Drill Zap
+            EndIf
+
 			If _Sleep($iDelayRunBot1) Then Return
 			checkMainScreen(False) ; required here due to many possible exits
 			If $Restart = True Then ContinueLoop

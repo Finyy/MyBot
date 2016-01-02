@@ -25,21 +25,56 @@ Func chkDBSmartAttackRedArea()
 			GUICtrlSetState($i, $GUI_HIDE)
 		Next
 	EndIf
-EndFunc   ;==>chkDBSmartAttackRedArea
+ EndFunc   ;==>chkDBSmartAttackRedArea
+
+ Func chkDBAttackOption()
+    If _GUICtrlComboBox_GetCurSel($cmbDBDeploy) = 4 Then
+        $iChkRedArea[$DB] = 0
+        GUICtrlSetState($chkDBSmartAttackRedArea, $GUI_UNCHECKED)
+        GUICtrlSetState($chkDBSmartAttackRedArea, $GUI_HIDE)
+        For $i = $lblDBSmartDeploy To $picDBAttackNearDarkElixirDrill
+            GUICtrlSetState($i, $GUI_HIDE)
+        Next
+    Else
+        GUICtrlSetState($chkDBSmartAttackRedArea, $GUI_SHOW)
+    EndIf
+EndFunc   ;==>chkDBAttackOption
 
 Func chkABSmartAttackRedArea()
-	If GUICtrlRead($chkABSmartAttackRedArea) = $GUI_CHECKED Then
-		$iChkRedArea[$LB] = 1
-		For $i = $lblABSmartDeploy To $picABAttackNearDarkElixirDrill
-			GUICtrlSetState($i, $GUI_SHOW)
-		Next
-	Else
-		$iChkRedArea[$LB] = 0
-		For $i = $lblABSmartDeploy To $picABAttackNearDarkElixirDrill
-			GUICtrlSetState($i, $GUI_HIDE)
-		Next
-	EndIf
-EndFunc   ;==>chkABSmartAttackRedArea
+   chkDESideEB()
+   If _GUICtrlComboBox_GetCurSel($cmbABDeploy) > 4 Then
+        GUICtrlSetState ($chkABSmartAttackRedArea, $GUI_HIDE)
+        $iChkRedArea[$LB] = 0
+        For $i = $lblABSmartDeploy To $picABAttackNearDarkElixirDrill
+            GUICtrlSetState($i, $GUI_HIDE)
+        Next
+        For $i = 1 to 24
+           GUICtrlSetState(Eval("cmbDeDeploy" & StringRight("0" & $i,2)), $GUI_ENABLE)
+           GUICtrlSetState(Eval("txtDeStyle" & StringRight("0" & $i,2)), $GUI_ENABLE)
+        Next
+        GUICtrlSetState($btnSave, $GUI_ENABLE)
+        GUICtrlSetState($btnLoad, $GUI_ENABLE)
+     Else
+        For $i = 1 to 24
+           GUICtrlSetState(Eval("cmbDeDeploy" & StringRight("0" & $i,2)), $GUI_DISABLE)
+           GUICtrlSetState(Eval("txtDeStyle" & StringRight("0" & $i,2)), $GUI_DISABLE)
+        Next
+        GUICtrlSetState($btnSave, $GUI_DISABLE)
+        GUICtrlSetState($btnLoad, $GUI_DISABLE)
+          GUICtrlSetState ($chkABSmartAttackRedArea, $GUI_SHOW)
+     EndIf
+    If GUICtrlRead($chkABSmartAttackRedArea) = $GUI_CHECKED Then
+        $iChkRedArea[$LB] = 1
+        For $i = $lblABSmartDeploy To $picABAttackNearDarkElixirDrill
+            GUICtrlSetState($i, $GUI_SHOW)
+         Next
+     Else
+        $iChkRedArea[$LB] = 0
+        For $i = $lblABSmartDeploy To $picABAttackNearDarkElixirDrill
+            GUICtrlSetState($i, $GUI_HIDE)
+         Next
+    EndIf
+EndFunc  ;==>chkABSmartAttackRedArea
 
 Func chkBalanceDR()
 	If GUICtrlRead($chkUseCCBalanced) = $GUI_CHECKED Then

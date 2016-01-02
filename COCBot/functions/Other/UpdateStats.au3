@@ -68,7 +68,12 @@ Func UpdateStats()
 			GUICtrlSetData($lblResultDEStart, _NumberFormat($iDarkCurrent, True))
 			GUICtrlSetData($lblResultDeNow, _NumberFormat($iDarkCurrent, True))
 			$iOldDarkCurrent = $iDarkCurrent
-		EndIf
+		 EndIf
+
+	  ; DE Smart Zap
+	    GUICtrlSetData($lblSmartZap, _NumberFormat($smartZapGain, True))
+        GUICtrlSetData($lblLightningUsed, _NumberFormat($NumLTSpellsUsed, True))
+
 		GUICtrlSetData($lblResultTrophyStart, _NumberFormat($iTrophyCurrent, True))
 		GUICtrlSetData($lblResultTrophyNow, _NumberFormat($iTrophyCurrent, True))
 		$iOldTrophyCurrent = $iTrophyCurrent
@@ -297,6 +302,16 @@ Func UpdateStats()
 	If $iOldDElixirFromDrills <> $iDElixirFromDrills Then
 		GUICtrlSetData($lblDElixirFromDrills, _NumberFormat($iDElixirFromDrills, True))
 		$iOldDElixirFromDrills = $iDElixirFromDrills
+	 EndIf
+
+	 	If $lblSmartZap <> $smartZapGain Then
+	   GUICtrlSetData($lblSmartZap, _NumberFormat($smartZapGain, True))
+	   $lblSmartZap = $smartZapGain
+	EndIf
+
+	If $lblLightningUsed <> $NumLTSpellsUsed Then
+	   GUICtrlSetData($lblLightningUsed, _NumberFormat($NumLTSpellsUsed, True))
+	   $lblLightningUsed = $NumLTSpellsUsed
 	EndIf
 
 	Local $iAttackedCount = 0

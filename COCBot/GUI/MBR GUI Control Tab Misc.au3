@@ -12,7 +12,7 @@
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
-
+#cs
 Func cmbProfile()
 	saveConfig()
 	FileClose($hLogFileHandle)
@@ -62,6 +62,7 @@ Func txtVillageName()
 	GUICtrlSetData($txtVillageName, $iVillageName)
 
 EndFunc   ;==>txtVillageName
+#ce
 
 Func btnLocateBarracks()
 	$RunState = True
@@ -298,4 +299,8 @@ Func cmbLanguage()
 	Local $aLanguage = _GUICtrlComboBox_GetListArray($cmbLanguage)
 	$sLanguage = $aLanguage[_GUICtrlComboBox_GetCurSel($cmbLanguage) + 1]
 	MsgBox("","","Restart Bot to load program with new language")
-EndFunc
+ EndFunc
+
+ Func btnConfirmRecSetting()
+	switchRecSetting()
+EndFunc ;btnConfirmRecSetting

@@ -23,6 +23,14 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 		If DirGetSize(@ScriptDir & "\Zombies\") = -1 Then DirCreate(@ScriptDir & "\Zombies\")
 	EndIf
 
+	If $iCmbSearchMode > 0 and ($LBAQFilter = 1 Or $LBBKFilter = 1) Then
+			If $Is_ClientSyncError = True  And $LBHeroFilter = 0 Then
+				SetLog("Client Sync error Heros already confirmed awake. Skipping Check ", $COLOR_BLUE)
+			Else
+				LiveRoyalFilter()
+		   EndIf
+	  EndIf
+
 	If $Is_ClientSyncError = False Then
 		For $i = 0 To $iModeCount - 1
 			$iAimGold[$i] = $iMinGold[$i]
@@ -193,12 +201,29 @@ Func VillageSearch() ;Control for searching a village that meets conditions
 				_WinAPI_DeleteObject($hBitmap)
 			EndIf
 			ExitLoop
-		ElseIf $match[$LB] And Not $dbBase Then
+		 ElseIf $match[$LB] And Not $dbBase Then
+	  If $iChkDeploySettings[$LB] = 5 And ($iSkipUndetectedDE > 0 Or $iSkipCentreDE > 0) Then
+			If CheckfoundorcoreDE() = True Then
+
+			   SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
+			   SetLog("      " & "DE Side Base Found!", $COLOR_GREEN, "Lucida Console", 7.5)
+			   $logwrited = True
+			   $iMatchMode = $LB
+			   $DESideFound = True
+			   ExitLoop
+		    EndIf
+		 ElseIf $iChkDeploySettings[$LB] = 5 Then
+			    SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
+				SetLog(_PadStringCenter(" DE Side Base Found! ", 50, "~"), $COLOR_GREEN, "Lucida Console", 7.5)
+				$iMatchMode = $LB
+				$DESideFound = True
+				ExitLoop
+			 Else
 			SetLog($GetResourcesTXT, $COLOR_GREEN, "Lucida Console", 7.5)
-			SetLog("      " & "Live Base Found!", $COLOR_GREEN, "Lucida Console", 7.5)
-			$logwrited = True
+			SetLog(_PadStringCenter(" Live Base Found! ", 50, "~"), $COLOR_GREEN, "Lucida Console", 7.5)
 			$iMatchMode = $LB
 			ExitLoop
+		 EndIf
 		ElseIf $match[$LB] Or $match[$DB] Then
 			If $OptBullyMode = 1 And ($SearchCount >= $ATBullyMode) Then
 				If $SearchTHLResult = 1 Then

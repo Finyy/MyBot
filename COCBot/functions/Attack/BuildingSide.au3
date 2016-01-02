@@ -14,6 +14,66 @@
 ; Link ..........: https://github.com/MyBotRun/MyBot/wiki
 ; Example .......: No
 ; ===============================================================================================================================
+Func DESpellDP()
+	local $xLimit = 0
+	local $yLimit = 0
+	local $HSDist[2] = [60, 55]
+	local $MaxDist[2] = [90, 90]
+	$SpellDP[0] = 0
+	$SpellDP[1] = 0
+
+	If $BuildingLoc = 0 Then
+		; assume the DE is in the center
+		$BuildingLocx = 430
+		$BuildingLocy = 313
+	Endif
+	If $BuildingEdge = 0 Then
+		$xLimit = 430 + $MaxDist[0]
+		$yLimit = 313 + $MaxDist[1]
+		$SpellDP[0] = $BuildingLocx + $HSDist[0]
+		$SpellDP[1] = $BuildingLocy + $HSDist[1]
+		if $SpellDP[0] > $xLimit Then
+			$SpellDP[0] = $xLimit
+		Endif
+		if $SpellDP[1] >  $yLimit Then
+			$SpellDP[1] = $yLimit
+		Endif
+	ElseIf $BuildingEdge = 3 Then
+		$xLimit = 430 + $MaxDist[0]
+		$yLimit = 313 - $MaxDist[1]
+		$SpellDP[0] = $BuildingLocx + $HSDist[0]
+		$SpellDP[1] = $BuildingLocy - $HSDist[1]
+		if $SpellDP[0] > $xLimit Then
+			$SpellDP[0] = $xLimit
+		Endif
+		if $SpellDP[1] < $yLimit  Then
+			$SpellDP[1] = $yLimit
+		Endif
+	ElseIf $BuildingEdge = 1 Then
+		$xLimit = 430 - $MaxDist[0]
+		$yLimit = 313 - $MaxDist[1]
+		$SpellDP[0] = $BuildingLocx - $HSDist[0]
+		$SpellDP[1] = $BuildingLocy - $HSDist[1]
+		if $SpellDP[0] < $xLimit Then
+			$SpellDP[0] = $xLimit
+		Endif
+		if $SpellDP[1] <  $yLimit Then
+			$SpellDP[1] = $yLimit
+		Endif
+	ElseIf $BuildingEdge = 2 Then
+		$xLimit = 430 - $MaxDist[0]
+		$yLimit = 313 + $MaxDist[1]
+		$SpellDP[0] = $BuildingLocx - $HSDist[0]
+		$SpellDP[1] = $BuildingLocy + $HSDist[1]
+		if $SpellDP[0] < $xLimit Then
+			$SpellDP[0] = $xLimit
+		Endif
+		if $SpellDP[1] > $yLimit  Then
+			$SpellDP[1] = $yLimit
+		Endif
+	EndIf
+	SetLog ("Spell drop point: " & $SpellDP[0] & ", " & $SpellDP[1] , $COLOR_BLUE)
+ EndFunc	;==>DESpellDP
 
 Func GetBuildingEdge($TypeBuilding = $eSideBuildingDES) ;Using $BuildingLoc x y we are finding which side the building is located, only needed when not using redline.
 	Local $TypeBuildingName
@@ -84,7 +144,24 @@ Func BuildingXY($TypeBuilding = $eSideBuildingDES)
 		$BuildingLocy = $pixel[1] ; compensation for $y center
 		$BuildingLoc = 1
 	EndIf
-EndFunc   ;==>BuildingXY
+ EndFunc   ;==>BuildingXY
+
+ Func CheckfoundorcoreDE()
+	BuildingXY()
+	If $iSkipUndetectedDE = 1 Or ($iSkipUndetectedDE = 2 And $LBHeroFilter = 1) Then
+		If $BuildingLoc = 0 Then
+			SetLog("DE Storage Not Located, Skipping ", $COLOR_BLUE)
+			Return False
+		EndIf
+	EndIf
+	If $BuildingLoc = 1 And ($iSkipCentreDE = 1 Or ($iSkipCentreDE = 2 And $LBHeroFilter = 1))  Then
+		If $BuildingLocy < ($DECorepix + 313) And $BuildingLocy > ($DECorepix - 313) And $BuildingLocx < ($DECorepix + 430) And $BuildingLocx > ($DECorepix - 430) Then
+			SetLog("DE Storage Located in Core, Skipping", $COLOR_BLUE)
+			Return False
+		EndIf
+	EndIf
+	Return True
+EndFunc	   ;==>CheckfoundorcoreDE
 
 Func DELow()
 	Local $DarkE = ""

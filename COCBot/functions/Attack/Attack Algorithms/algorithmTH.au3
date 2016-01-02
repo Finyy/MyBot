@@ -415,6 +415,8 @@ Func CheckOneStar($DelayInSec = 0, $Log = True, $CheckHeroes = True)
 		;check for one star
 		If _ColorCheck(_GetPixelColor($aWonOneStar[0], $aWonOneStar[1], True), Hex($aWonOneStar[2], 6), $aWonOneStar[3]) Then ;exit if 1 star
 			If $Log = True Then SetLog("Townhall has been destroyed!", $COLOR_ORANGE)
+			DrillZapTH()
+			_Sleep(1000)
 			If $Restart = True Then Return True
 
 			;Activate King and Queen powers to restore health before exit if they are deployed

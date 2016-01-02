@@ -44,7 +44,7 @@
 
 
 	Local $x = 255, $y = 150
-	$grpTHSnipeWhileTrainOptions = GUICtrlCreateGroup(GetTranslated(4,13, "TH Snipe"), $x - 20, $y - 20, 225, 375)
+	$grpTHSnipeWhileTrainOptions = GUICtrlCreateGroup(GetTranslated(4,13, "TH Snipe"), $x - 20, $y - 20, 225, 325)
 
 		$y -=5
 		$ChkSnipeWhileTrain = GUICtrlCreateCheckbox(GetTranslated(4,14, "Snipe While Train"), $x-10, $y, -1, -1)
@@ -156,6 +156,13 @@
 			$txtTip = GetTranslated(4,63, "Use Heal spells when Attacking TH Snipe") & @CRLF & GetTranslated(4,64, "Will be deployed in Second wave")
 			GUICtrlSetTip(-1, $txtTip)
 			GUICtrlSetState(-1, $GUI_DISABLE)
+
+	    $y += 27
+		GUICtrlCreateIcon($pIconLib, $eIcnDrill, $x - 16, $y, 24, 24)
+		$chkDrillZapTH = GUICtrlCreateCheckbox("Drill Zap On TH Snipe", $x + 12, $y+1, -1, -1)
+		$txtTip = "Use This If You Want To Zap Drill When TH Snipping"
+		GUICtrlSetTip(-1, $txtTip)
+		GUICtrlSetState(-1, $GUI_DISABLE)
 
 
 		$y+= 30
