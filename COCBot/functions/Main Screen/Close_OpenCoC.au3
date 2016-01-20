@@ -30,8 +30,8 @@ Func CloseCoC($ReOpenCoC = False)
 	BS1HomeButton()
 	If Not $RunState Then Return
 	;$Adb = StringReplace(_WinAPI_GetProcessFileName(WinGetProcess($Title)), "Frontend", "Adb")
-	;ShellExecuteWait($Adb, "-s emulator-5554 shell am force-stop com.supercell.clashofclans", "", Default, @SW_HIDE) ; Close CoC ( Forcefull Kill )
-	SendAdbCommand("shell am force-stop com.supercell.clashofclans")
+	;ShellExecuteWait($Adb, "-s emulator-5554 shell am force-stop com.supercell.clashofclans.kunlun", "", Default, @SW_HIDE) ; Close CoC ( Forcefull Kill )
+	SendAdbCommand("shell am force-stop com.supercell.clashofclans.kunlun")
     If Not $RunState Then Return
 	If $ReOpenCoC Then
         OpenCoC()
@@ -68,8 +68,8 @@ Func OpenCoC()
 	BS1HomeButton()
 	If _Sleep(250) Then Return
 	;$RunApp = StringReplace(_WinAPI_GetProcessFileName(WinGetProcess($Title)), "Frontend", "RunApp")
-	;Run($RunApp & " Android com.supercell.clashofclans com.supercell.clashofclans.GameApp")
-    SendAdbCommand("shell am start -n com.supercell.clashofclans/.GameApp")
+	;Run($RunApp & " Android com.supercell.clashofclans.kunlun com.supercell.clashofclans.kunlun.GameAppKunlun")
+    SendAdbCommand("shell am start -n com.supercell.clashofclans/.GameAppKunkun")
     If Not $RunState Then Return
 	While _CheckPixel($aIsMain, True) = False ; Wait for MainScreen
 		$iCount += 1
@@ -111,8 +111,8 @@ Func WaitnOpenCoC($iWaitTime, $bFullRestart = False)
 	If _SleepStatus($iWaitTime) Then Return False ; Wait for server to see log off
 
 	;$RunApp = StringReplace(_WinAPI_GetProcessFileName(WinGetProcess($Title)), "Frontend", "RunApp")
-	;Run($RunApp & " Android com.supercell.clashofclans com.supercell.clashofclans.GameApp")
-	SendAdbCommand("shell am start -n com.supercell.clashofclans/.GameApp")
+	;Run($RunApp & " Android com.supercell.clashofclans.kunlun com.supercell.clashofclans.kunlun.GameAppKunlun")
+	SendAdbCommand("shell am start -n com.supercell.clashofclans/.GameAppKunkun")
     If Not $RunState Then Return
 
 	If $debugSetlog = 1 Then setlog("CoC Restarted, Waiting for completion", $COLOR_PURPLE)

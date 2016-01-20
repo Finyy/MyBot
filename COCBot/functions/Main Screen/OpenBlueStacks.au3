@@ -25,7 +25,7 @@ Func OpenBlueStacks($bRestart = False)
 
     If Not InitBlueStacks() Then Return
 
-	$PID = ShellExecute($__BlueStacks_Path & "HD-RunApp.exe", "-p com.supercell.clashofclans -a com.supercell.clashofclans.GameApp")  ;Start BS and CoC with command line
+	$PID = ShellExecute($__BlueStacks_Path & "HD-RunApp.exe", "-p com.supercell.clashofclans.kunlun -a com.supercell.clashofclans.kunlun.GameAppKunlun")  ;Start BS and CoC with command line
 	If _Sleep(1000) Then Return
 	$ErrorResult = ControlGetHandle("BlueStacks Error", "", "") ; Check for BS error window handle if it opens
 	If $debugsetlog = 1 Then Setlog("$PID= "&$PID & ", $ErrorResult = " &$ErrorResult, $COLOR_PURPLE)
@@ -144,7 +144,7 @@ Func OpenBlueStacks2($bRestart = False)
      If Not $RunState Then Return
      ; Launch CcC
 	 SetLog("Launch Clash of Clans now...", $COLOR_GREEN)
-	 ;$cmdOutput = LaunchConsole($AndroidAdbPath, "-s " & $AndroidAdbDevice & " shell am start -W -S -n com.supercell.clashofclans/.GameApp", $process_killed)
+	 ;$cmdOutput = LaunchConsole($AndroidAdbPath, "-s " & $AndroidAdbDevice & " shell am start -W -S -n com.supercell.clashofclans/.GameAppKunkun", $process_killed)
 
 	 RestartAndroidCoC()
 	 If Not $RunState Then Return
@@ -312,7 +312,7 @@ Func RestartBlueStacksCoC()
    If @error <> 0 Then Return False
    ;WinActivate($HWnD)  	; ensure bot has window focus
    ;WaitForDeviceBlueStacks2(30)
-   $cmdOutput = LaunchConsole($AndroidAdbPath, "-s " & $AndroidAdbDevice & " shell am start -W -S -n com.supercell.clashofclans/.GameApp", $process_killed)
+   $cmdOutput = LaunchConsole($AndroidAdbPath, "-s " & $AndroidAdbDevice & " shell am start -W -S -n com.supercell.clashofclans/.GameAppKunkun", $process_killed)
    SetLog("Please wait for CoC restart......", $COLOR_BLUE)   ; Let user know we need time...
    Return True
 EndFunc
@@ -325,7 +325,7 @@ Func RestartBlueStacks2CoC()
    If @error <> 0 Then Return False
    ;WinActivate($HWnD)  	; ensure bot has window focus
    ;WaitForDeviceBlueStacks2(30)
-   $cmdOutput = LaunchConsole($AndroidAdbPath, "-s " & $AndroidAdbDevice & " shell am start -W -S -n com.supercell.clashofclans/.GameApp", $process_killed)
+   $cmdOutput = LaunchConsole($AndroidAdbPath, "-s " & $AndroidAdbDevice & " shell am start -W -S -n com.supercell.clashofclans/.GameAppKunkun", $process_killed)
    SetLog("Please wait for CoC restart......", $COLOR_BLUE)   ; Let user know we need time...
    Return True
 EndFunc

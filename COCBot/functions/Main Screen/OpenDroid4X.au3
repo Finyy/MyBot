@@ -72,7 +72,7 @@ Func OpenDroid4X($bRestart = False)
 
 	; Launch CcC
 	SetLog("Launch Clash of Clans now...", $COLOR_GREEN)
-    $cmdOutput = LaunchConsole($AndroidAdbPath, "-s " & $AndroidAdbDevice & " shell am start -S -n com.supercell.clashofclans/.GameApp", $process_killed, 30 * 1000) ; removed "-W" option and added timeout (didn't exit sometimes)
+    $cmdOutput = LaunchConsole($AndroidAdbPath, "-s " & $AndroidAdbDevice & " shell am start -S -n com.supercell.clashofclans/.GameAppKunkun", $process_killed, 30 * 1000) ; removed "-W" option and added timeout (didn't exit sometimes)
 	If StringInStr($cmdOutput, "Error:") > 0 Then
 		SetLog("Unable to load Clash of Clans, install/reinstall the game.", $COLOR_RED)
 		SetLog("Unable to continue........", $COLOR_MAROON)
@@ -222,7 +222,7 @@ Func RestartDroid4XCoC()
    ;$connected_to = StringInStr($cmdOutput, "connected to")
 
    SetLog("Please wait for CoC restart......", $COLOR_BLUE)   ; Let user know we need time...
-   $cmdOutput = LaunchConsole($AndroidAdbPath, "-s " & $AndroidAdbDevice & " shell am start -S -n com.supercell.clashofclans/.GameApp", $process_killed, 30 * 1000) ; removed "-W" option and added timeout (didn't exit sometimes)
+   $cmdOutput = LaunchConsole($AndroidAdbPath, "-s " & $AndroidAdbDevice & " shell am start -S -n com.supercell.clashofclans/.GameAppKunkun", $process_killed, 30 * 1000) ; removed "-W" option and added timeout (didn't exit sometimes)
    If StringInStr($cmdOutput, "Error:") > 0 Then
 	  SetLog("Unable to load Clash of Clans, install/reinstall the game.", $COLOR_RED)
 	  SetLog("Unable to continue........", $COLOR_MAROON)

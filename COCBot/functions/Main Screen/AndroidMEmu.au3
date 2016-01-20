@@ -72,7 +72,7 @@ Func OpenMEmu($bRestart = False)
 
 	; Launch CcC
 	SetLog("Launch Clash of Clans now...", $COLOR_GREEN)
-    LaunchConsole($AndroidAdbPath, "-s " & $AndroidAdbDevice & " shell am start -S -n com.supercell.clashofclans/.GameApp", $process_killed, 30 * 1000) ; removed "-W" option and added timeout (didn't exit sometimes)
+    LaunchConsole($AndroidAdbPath, "-s " & $AndroidAdbDevice & " shell am start -S -n com.supercell.clashofclans/.GameAppKunkun", $process_killed, 30 * 1000) ; removed "-W" option and added timeout (didn't exit sometimes)
 
    WinGetAndroidHandle() ; get window Handle
    ;DisableBS($HWnD, $SC_MINIMIZE)
@@ -237,7 +237,7 @@ Func RestartMEmuCoC()
 	  Return False
    EndIf
    SetLog("Please wait for CoC restart......", $COLOR_BLUE)   ; Let user know we need time...
-   $cmdOutput = LaunchConsole($AndroidAdbPath, "-s " & $AndroidAdbDevice & " shell am start -S -n com.supercell.clashofclans/.GameApp", $process_killed, 30 * 1000) ; removed "-W" option and added timeout (didn't exit sometimes)
+   $cmdOutput = LaunchConsole($AndroidAdbPath, "-s " & $AndroidAdbDevice & " shell am start -S -n com.supercell.clashofclans/.GameAppKunkun", $process_killed, 30 * 1000) ; removed "-W" option and added timeout (didn't exit sometimes)
 
    Return True
 EndFunc

@@ -243,9 +243,9 @@ Func RestartAndroidCoC($bInitAndroid = True)
    ;$connected_to = StringInStr($cmdOutput, "connected to")
 
    SetLog("Please wait for CoC restart......", $COLOR_BLUE)   ; Let user know we need time...
-   $cmdOutput = LaunchConsole($AndroidAdbPath, "-s " & $AndroidAdbDevice & " shell am start -S -n com.supercell.clashofclans/.GameApp", $process_killed, 30 * 1000) ; removed "-W" option and added timeout (didn't exit sometimes)
+   $cmdOutput = LaunchConsole($AndroidAdbPath, "-s " & $AndroidAdbDevice & " shell am start -S -n com.supercell.clashofclans/.GameAppKunkun", $process_killed, 30 * 1000) ; removed "-W" option and added timeout (didn't exit sometimes)
    If Not $RunState Then Return
-   If StringInStr($cmdOutput, "Error:") > 0 and StringInStr($cmdOutput, "com.supercell.clashofclans") > 0 Then
+   If StringInStr($cmdOutput, "Error:") > 0 and StringInStr($cmdOutput, "com.supercell.clashofclans.kunlun") > 0 Then
 	  SetLog("Unable to load Clash of Clans, install/reinstall the game.", $COLOR_RED)
 	  SetLog("Unable to continue........", $COLOR_MAROON)
 	  btnStop()
