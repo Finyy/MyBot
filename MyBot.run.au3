@@ -128,7 +128,13 @@ AdlibRegister("PushBulletDeleteOldPushes", $PBDeleteOldPushesInterval)
 
 CheckDisplay() ; verify display size and DPI (Dots Per Inch) setting
 
-CheckVersion() ; check latest version on mybot.run site
+;CheckVersion() ; check latest version on mybot.run site
+readCollectorConfig();initialize collector fullness variables before loading images
+
+LoadTHImage() ; Load TH images
+LoadElixirImage() ; Load Elixir images
+LoadElixirImage75Percent(); Load Elixir images full at 75%
+LoadElixirImage50Percent(); Load Elixir images full at 50%
 
 ;AutoStart Bot if request
 AutoStart()
