@@ -25,7 +25,7 @@ Func OpenBlueStacks($bRestart = False)
 
     If Not InitBlueStacks() Then Return
 
-	$PID = ShellExecute($__BlueStacks_Path & "HD-RunApp.exe", "-p com.supercell.clashofclans.kunlun -a com.supercell.clashofclans.kunlun.GameAppKunlun")  ;Start BS and CoC with command line
+	$PID = ShellExecute($__BlueStacks_Path & "HD-RunApp.exe", "-p com.supercell.clashofclans.kunlun -a com.supercell.clashofclans.GameAppKunlun")  ;Start BS and CoC with command line
 	If _Sleep(1000) Then Return
 	$ErrorResult = ControlGetHandle("BlueStacks Error", "", "") ; Check for BS error window handle if it opens
 	If $debugsetlog = 1 Then Setlog("$PID= "&$PID & ", $ErrorResult = " &$ErrorResult, $COLOR_PURPLE)
